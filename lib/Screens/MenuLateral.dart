@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tarea01/Screens/ContadorClics.dart';
 import 'package:flutter_tarea01/Screens/Iconos.dart';
 import 'package:flutter_tarea01/main.dart';
 import 'Fila.dart';
@@ -75,6 +76,20 @@ class MenuLateral extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => const Iconos()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: Icon(Icons.touch_app, color: Colors.white),
+                title: const Text(
+                  "Contador Clics",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const Contador()));
                 },
               ),
             ),
