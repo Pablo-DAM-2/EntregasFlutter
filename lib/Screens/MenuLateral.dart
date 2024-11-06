@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tarea01/Screens/ContadorClics.dart';
 import 'package:flutter_tarea01/Screens/Iconos.dart';
+import 'package:flutter_tarea01/Screens/Colores.dart';
 import 'package:flutter_tarea01/main.dart';
 import 'Fila.dart';
 import 'Columna.dart';
@@ -12,7 +13,7 @@ class MenuLateral extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Color.fromARGB(255, 115, 120, 130),
+        color: const Color.fromARGB(255, 115, 120, 130),
         child: ListView(
           children: <Widget>[
             const UserAccountsDrawerHeader(
@@ -25,7 +26,7 @@ class MenuLateral extends StatelessWidget {
             ),
             Ink(
               child: ListTile(
-                leading: Icon(Icons.home, color: Colors.white),
+                leading: const Icon(Icons.home, color: Colors.white),
                 title: const Text(
                   "Principal",
                   style: TextStyle(color: Colors.white),
@@ -39,7 +40,7 @@ class MenuLateral extends StatelessWidget {
             ),
             Ink(
               child: ListTile(
-                leading: Icon(Icons.image, color: Colors.white),
+                leading: const Icon(Icons.image, color: Colors.white),
                 title: const Text(
                   "Fila",
                   style: TextStyle(color: Colors.white),
@@ -53,7 +54,7 @@ class MenuLateral extends StatelessWidget {
             ),
             Ink(
               child: ListTile(
-                leading: Icon(Icons.image, color: Colors.white),
+                leading: const Icon(Icons.image, color: Colors.white),
                 title: const Text(
                   "Columna",
                   style: TextStyle(color: Colors.white),
@@ -67,7 +68,7 @@ class MenuLateral extends StatelessWidget {
             ),
             Ink(
               child: ListTile(
-                leading: Icon(Icons.star, color: Colors.white),
+                leading: const Icon(Icons.star, color: Colors.white),
                 title: const Text(
                   "Iconos",
                   style: TextStyle(color: Colors.white),
@@ -81,7 +82,7 @@ class MenuLateral extends StatelessWidget {
             ),
             Ink(
               child: ListTile(
-                leading: Icon(Icons.touch_app, color: Colors.white),
+                leading: const Icon(Icons.touch_app, color: Colors.white),
                 title: const Text(
                   "Contador Clics",
                   style: TextStyle(color: Colors.white),
@@ -90,6 +91,20 @@ class MenuLateral extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => const Contador()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: const Icon(Icons.touch_app, color: Colors.white),
+                title: const Text(
+                  "Juego pulsar imagen",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const Colores()));
                 },
               ),
             ),
