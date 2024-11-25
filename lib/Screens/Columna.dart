@@ -8,17 +8,9 @@ class Columna extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 55, 55, 55),
           title: const Text("Fotos en columna"),
-          titleTextStyle: const TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-          iconTheme: const IconThemeData(color: Colors.white, size: 40),
         ),
         drawer: const MenuLateral(),
-        backgroundColor: const Color.fromARGB(255, 92, 101, 192),
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

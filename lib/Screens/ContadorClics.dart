@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tarea01/Screens/MenuLateral.dart';
-
-void main() => runApp(const Contador());
+import 'MenuLateral.dart';
 
 class ContadorClics extends StatelessWidget {
   const ContadorClics({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'ContadorClics',
-      home: Contador(),
-    );
+    return const Contador();
   }
 }
 
@@ -47,14 +42,7 @@ class _MiContadorState extends State<Contador> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 55, 55, 55),
         title: const Text("Contador de clicks"),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-        ),
-        iconTheme: const IconThemeData(color: Colors.white, size: 40),
       ),
       drawer: const MenuLateral(),
       body: Center(

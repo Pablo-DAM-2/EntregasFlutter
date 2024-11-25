@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tarea01/Screens/ContadorClics.dart';
-import 'package:flutter_tarea01/Screens/Iconos.dart';
-import 'package:flutter_tarea01/Screens/Colores.dart';
+import 'package:flutter_tarea01/screens/juegoImagenes.dart';
+import '../routes/routes.dart';
 import 'package:flutter_tarea01/main.dart';
-import 'Fila.dart';
-import 'Columna.dart';
 
 class MenuLateral extends StatelessWidget {
   const MenuLateral({super.key});
@@ -47,8 +44,7 @@ class MenuLateral extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => const Fila()));
+                  Navigator.pushNamed(context, AppRoutes.fila);
                 },
               ),
             ),
@@ -61,8 +57,7 @@ class MenuLateral extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => const Columna()));
+                  Navigator.pushNamed(context, AppRoutes.columna);
                 },
               ),
             ),
@@ -75,8 +70,34 @@ class MenuLateral extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => const Iconos()));
+                  Navigator.pushNamed(context, AppRoutes.iconos);
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: const Icon(Icons.phone, color: Colors.white),
+                title: const Text(
+                  "Pirámide",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.pushNamed(context, AppRoutes.piramide);
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading:
+                    const Icon(Icons.functions_rounded, color: Colors.white),
+                title: const Text(
+                  "Desafío",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.pushNamed(context, AppRoutes.desafio);
                 },
               ),
             ),
@@ -89,8 +110,7 @@ class MenuLateral extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => const Contador()));
+                  Navigator.pushNamed(context, AppRoutes.contadorClics);
                 },
               ),
             ),
@@ -104,7 +124,8 @@ class MenuLateral extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => const Colores()));
+                      builder: (BuildContext context) =>
+                          const JuegoImagenes()));
                 },
               ),
             ),
