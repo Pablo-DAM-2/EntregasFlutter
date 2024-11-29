@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tarea01/screens/juegoImagenes.dart';
 import '../screens/screens.dart';
 
 class AppRoutes {
@@ -12,6 +11,7 @@ class AppRoutes {
   static const String juegoImagenes = '/juegoImagenes';
   static const String piramide = '/piramide';
   static const String desafio = '/desafio';
+  static const String sieteymedio = '/sieteymedio';
 
   // Mapa de rutas
   static final Map<String, WidgetBuilder> routes = {
@@ -23,5 +23,6 @@ class AppRoutes {
     juegoImagenes: (context) => const JuegoImagenes(),
     piramide: (context) => const Piramide(),
     desafio: (context) => const Desafio(),
+    sieteymedio: (context) => const SieteYMedio(),
   };
 }

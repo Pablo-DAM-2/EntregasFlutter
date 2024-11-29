@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tarea01/screens/juegoImagenes.dart';
+import 'package:flutter_tarea01/screens/sieteymedio.dart';
 import '../routes/routes.dart';
 import 'package:flutter_tarea01/main.dart';
 
@@ -14,8 +15,8 @@ class MenuLateral extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             const UserAccountsDrawerHeader(
-              accountName: Text("LionX"),
-              accountEmail: Text("pagusal3108@g.educaand.es"),
+              accountName: Text("Pablo Aguilera"),
+              accountEmail: Text("pabloaguilerasalinas@gmail.com"),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/relax.jpg"),
@@ -126,6 +127,20 @@ class MenuLateral extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) =>
                           const JuegoImagenes()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: const Icon(Icons.casino, color: Colors.white),
+                title: const Text(
+                  "Siete y medio",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const SieteYMedio()));
                 },
               ),
             ),

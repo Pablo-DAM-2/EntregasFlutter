@@ -6,3 +6,4 @@ export 'contadorClics.dart';
 export 'juegoImagenes.dart';
 export 'piramide.dart';
 export 'desafio.dart';
+export 'sieteymedio.dart';
