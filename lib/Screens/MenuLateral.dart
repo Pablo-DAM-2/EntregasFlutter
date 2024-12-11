@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tarea01/screens/formulario.dart';
 import 'package:flutter_tarea01/screens/juegoImagenes.dart';
 import 'package:flutter_tarea01/screens/sieteymedio.dart';
 import '../routes/routes.dart';
@@ -141,6 +142,21 @@ class MenuLateral extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => const SieteYMedio()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading:
+                    const Icon(Icons.check_box_rounded, color: Colors.white),
+                title: const Text(
+                  "Formulario",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const Formulario()));
                 },
               ),
             ),

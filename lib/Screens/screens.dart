@@ -7,3 +7,4 @@ export 'juegoImagenes.dart';
 export 'piramide.dart';
 export 'desafio.dart';
 export 'sieteymedio.dart';
+export 'formulario.dart';

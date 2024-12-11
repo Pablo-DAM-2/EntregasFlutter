@@ -12,6 +12,7 @@ class AppRoutes {
   static const String piramide = '/piramide';
   static const String desafio = '/desafio';
   static const String sieteymedio = '/sieteymedio';
+  static const String formulario = '/formulario';
 
   // Mapa de rutas
   static final Map<String, WidgetBuilder> routes = {
@@ -24,5 +25,6 @@ class AppRoutes {
     piramide: (context) => const Piramide(),
     desafio: (context) => const Desafio(),
     sieteymedio: (context) => const SieteYMedio(),
+    formulario: (context) => const Formulario(),
   };
 }
