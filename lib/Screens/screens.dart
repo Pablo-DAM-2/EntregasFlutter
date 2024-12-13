@@ -8,3 +8,5 @@ export 'piramide.dart';
 export 'desafio.dart';
 export 'sieteymedio.dart';
 export 'formulario.dart';
+export 'guessNumber.dart';
+export 'formularioSwitch.dart';

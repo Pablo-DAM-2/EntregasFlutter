@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tarea01/screens/formulario.dart';
+import 'package:flutter_tarea01/screens/formularioSwitch.dart';
+import 'package:flutter_tarea01/screens/guessNumber.dart';
 import 'package:flutter_tarea01/screens/juegoImagenes.dart';
 import 'package:flutter_tarea01/screens/sieteymedio.dart';
 import '../routes/routes.dart';
@@ -157,6 +159,37 @@ class MenuLateral extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => const Formulario()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: const Icon(Icons.question_mark_rounded,
+                    color: Colors.white),
+                title: const Text(
+                  "Adivinar Número",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const GuessNumber()));
+                },
+              ),
+            ),
+            Ink(
+              child: ListTile(
+                leading: const Icon(Icons.swap_horizontal_circle_sharp,
+                    color: Colors.white),
+                title: const Text(
+                  "Formulario Switch",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const FormularioSwitch()));
                 },
               ),
             ),
