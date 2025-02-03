@@ -12,13 +12,14 @@ class Formulario extends StatefulWidget {
 class _FormularioState extends State<Formulario> {
   final _formKey = GlobalKey<FormState>();
 
-  // Variables para almacenar los valores
+  //Variables para almacenar los valores
   String? _dropdownValue;
   bool _isChecked = false;
   bool _isSwitched = false;
   String? _radioValue;
   double _sliderValue = 0.0;
   final _textController = TextEditingController();
+  final _dateController = TextEditingController();
 
   @override
   void dispose() {
@@ -40,7 +41,7 @@ class _FormularioState extends State<Formulario> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // TextFormField
+              //TextFormField
               TextFormField(
                 controller: _textController,
                 decoration: const InputDecoration(
@@ -64,12 +65,54 @@ class _FormularioState extends State<Formulario> {
                   if (value == null || value.isEmpty) {
                     return 'Este campo no puede estar vacío';
                   }
+                  final nameRegExp = RegExp(r"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+                  if (!nameRegExp.hasMatch(value)) {
+                    return 'Ingresa un nombre válido (solo letras y espacios)';
+                  }
                   return null;
                 },
               ),
               const SizedBox(height: 16.0),
 
-              // DropdownButton
+              //Campo de fecha
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Selecciona tu fecha de nacimiento',
+                  labelStyle:
+                      TextStyle(color: Color.fromARGB(255, 255, 136, 0)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 136, 0), width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 136, 0), width: 2),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 136, 0), width: 2),
+                  ),
+                ),
+                readOnly: true,
+                controller: _dateController,
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                  );
+                  if (pickedDate != null) {
+                    setState(() {
+                      _dateController.text =
+                          "${pickedDate.toLocal()}".split(' ')[0];
+                    });
+                  }
+                },
+              ),
+              const SizedBox(height: 16.0),
+
+              //DropdownButton
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(
                   labelText: 'Selecciona un juego',
@@ -100,7 +143,7 @@ class _FormularioState extends State<Formulario> {
               ),
               const SizedBox(height: 16.0),
 
-              // Checkbox
+              //Checkbox
               Row(
                 children: [
                   Checkbox(
@@ -119,7 +162,7 @@ class _FormularioState extends State<Formulario> {
               ),
               const SizedBox(height: 16.0),
 
-              // Switch
+              //Switch
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -137,7 +180,7 @@ class _FormularioState extends State<Formulario> {
               ),
               const SizedBox(height: 16.0),
 
-              // RadioButton
+              //RadioButton
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -176,7 +219,7 @@ class _FormularioState extends State<Formulario> {
               ),
               const SizedBox(height: 16.0),
 
-              // Slider
+              //Slider
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -201,7 +244,7 @@ class _FormularioState extends State<Formulario> {
 
               const SizedBox(height: 16.0),
 
-              // Botón de enviar
+              //Botón de enviar
               Center(
                 child: ElevatedButton(
                   onPressed: () {

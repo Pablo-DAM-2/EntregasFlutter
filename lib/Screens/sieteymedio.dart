@@ -19,6 +19,9 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
   List<double> cartasMaquina = [];
   bool jugadorPlantado = false;
   bool maquinaPlantada = false;
+  int victoriasJugador = 0;
+  int victoriasMaquina = 0;
+  bool partidaTerminada = false;
 
   @override
   void initState() {
@@ -29,6 +32,11 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
   //Se inicializa el juego reseteando las variables
   void _iniciarJuego() {
     setState(() {
+      if (partidaTerminada) {
+        victoriasJugador = 0;
+        victoriasMaquina = 0;
+        partidaTerminada = false;
+      }
       puntosJugador = 0;
       puntosMaquina = 0;
       cartasJugador = [];
@@ -213,14 +221,24 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
       mensaje = "Empate. Ambos jugadores se han pasado.";
     } else if (puntosJugador > 7.5) {
       mensaje = "Te has pasado, la banca gana";
+      victoriasMaquina++;
     } else if (puntosMaquina > 7.5) {
       mensaje = "La banca se ha pasado, tú ganas";
+      victoriasJugador++;
     } else if (puntosJugador > puntosMaquina) {
       mensaje = "Tienes más puntos que la banca, tú ganas";
+      victoriasJugador++;
     } else if (puntosJugador < puntosMaquina) {
       mensaje = "La banca tiene más puntos que tú, has perdido";
+      victoriasMaquina++;
     } else {
       mensaje = "Empate. Ambos jugadores tienen los mismos puntos";
+    }
+    if (victoriasJugador >= 5 || victoriasMaquina >= 5) {
+      partidaTerminada = true;
+      mensaje = victoriasJugador >= 5
+          ? "Enhorabuena makina has ganao"
+          : "La banca ta ganao parguela";
     }
   }
 
@@ -257,6 +275,10 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
               'Puntos: $puntosMaquina',
               style: const TextStyle(fontSize: 20),
             ),
+            Text(
+              'Partidas: $victoriasMaquina',
+              style: const TextStyle(fontSize: 20),
+            ),
             const SizedBox(height: 20),
             //Puntos del jugador
             const Text(
@@ -275,6 +297,10 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
             ),
             Text(
               'Puntos: $puntosJugador',
+              style: const TextStyle(fontSize: 20),
+            ),
+            Text(
+              'Partidas: $victoriasJugador',
               style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 20),
@@ -312,7 +338,8 @@ class _JuegoSieteYMedioState extends State<SieteYMedio> {
                   : () {
                       _iniciarJuego();
                     },
-              child: const Text('Reiniciar Partida'),
+              child:
+                  Text(partidaTerminada ? 'Reiniciar Partida' : 'Nueva ronda'),
             )
           ],
         ),

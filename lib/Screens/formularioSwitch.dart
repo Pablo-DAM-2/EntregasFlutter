@@ -36,10 +36,6 @@ class _FormularioSwitchState extends State<FormularioSwitch> {
   };
   String selectedGender = "";
 
-  final RegExp emailRegex =
-      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\$');
-  final RegExp phoneRegex = RegExp(r'^[0-9]{9}\$');
-
   void toggleSwitch() {
     setState(() {
       isLeft = !isLeft;
@@ -119,6 +115,10 @@ class _FormularioSwitchState extends State<FormularioSwitch> {
             if (value == null || value.isEmpty) {
               return "Este campo es obligatorio";
             }
+            final nameRegExp = RegExp(r"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+            if (!nameRegExp.hasMatch(value)) {
+              return 'Ingresa un nombre válido (solo letras y espacios)';
+            }
             return null;
           },
         ),
@@ -143,7 +143,12 @@ class _FormularioSwitchState extends State<FormularioSwitch> {
             ),
           ),
           validator: (value) {
-            if (value == null || !emailRegex.hasMatch(value)) {
+            if (value == null || value.isEmpty) {
+              return "Este campo no puede estar vacío";
+            }
+            final emailRegExp =
+                RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+            if (!emailRegExp.hasMatch(value)) {
               return "Ingrese un correo válido";
             }
             return null;
@@ -170,7 +175,11 @@ class _FormularioSwitchState extends State<FormularioSwitch> {
           ),
           keyboardType: TextInputType.phone,
           validator: (value) {
-            if (value == null || !phoneRegex.hasMatch(value)) {
+            if (value == null || value.isEmpty) {
+              return "Este campo no puede estar vacío";
+            }
+            final phoneRegExp = RegExp(r'^\d{9}$');
+            if (!phoneRegExp.hasMatch(value)) {
               return "Ingrese un teléfono válido de 9 dígitos";
             }
             return null;
